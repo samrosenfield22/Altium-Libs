@@ -1,0 +1,31 @@
+REV A Notes
+------------
+
+* How hot do hookah coals get?
+* How much current does the heating element need to reach this current? Do we
+need to boost to a higher voltage to do this?
+* Is the FET juicy enough?
+answer: need to up the power
+
+Backlight LED calculations:
+Imin = 10mA, Imax = 26mA
+V = 7.4 - 1 = 6.4V (assuming we power off the 7.4V, w/ a ~1V diode drop)
+Vd = 3V
+R range: (6.4 - 3)V/10mA = 340R
+         (6.4 - 3)V/26mA = 131R (minimum resistance)
+         if the diode drop was .7V and the led drop was 2.9V:
+         (7.4 - 2.9 - .7)V/26mA = 146R (absolute minimum)
+         so, we use a 147R fixed (standard value) + 200R trimpot
+
+* Does pin RA0 connect to the ADC? YES!
+* Do they make 0805 caps that can take beyond 48V? YES!
+
+Backlight LED calculations (revisited):
+Imin = 10mA, Imax = 26mA
+if V = 3.3V, Vd = 3V, so Vr = 0.3V
+if we want I = 15mA, we get R = 0.3V/15mA = 20R
+worst case: V = 3.5V, Vd = 2.9V -> Vr = 0.6V -> 30mA
+
+* Can i do 11/15 mil vias? For the vreg pad.
+
+http://www.mpja.com/15-Volt-Power-Supply-3A-45W-Meanwell/productinfo/31506+PS
